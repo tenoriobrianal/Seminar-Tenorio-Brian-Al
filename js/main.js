@@ -95,10 +95,15 @@
     if (chosen === "dark" || chosen === "light") return chosen;
     return systemDark.matches ? "dark" : "light";
   };
+  var themeColors = document.querySelectorAll('meta[name="theme-color"]');
   var syncThemeBtn = function () {
     var dark = currentTheme() === "dark";
     themeBtn.setAttribute("aria-pressed", String(dark));
     themeBtn.title = dark ? "Switch to light mode" : "Switch to dark mode";
+    
+    for (var i = 0; i < themeColors.length; i++) {
+      themeColors[i].setAttribute("content", dark ? "#0f1216" : "#ffffff");
+    }
   };
 
   if (themeBtn) {
