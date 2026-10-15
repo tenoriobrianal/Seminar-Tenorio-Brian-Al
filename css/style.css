@@ -1,13 +1,6 @@
-/* ==========================================================================
-   Seminar portfolio of Brian Al P. Tenorio
-   --------------------------------------------------------------------------
-   1. Tokens (colours, fonts)      5. Rack of seminar outputs
-   2. Base                         6. Output pages
-   3. Layout: top bar + page       7. Galleries and image viewer
-   4. Shared page parts            8. Placeholders, About, Digital Literacy
-   ========================================================================== */
 
-/* 1. Tokens ---------------------------------------------------------------- */
+
+
 :root {
   --paper: #eceef1;
   --panel: #ffffff;
@@ -16,8 +9,8 @@
   --line: #cbd1d8;
   --line-strong: #98a1ac;
 
-  --gold: #e3aa16;          /* department gold */
-  --gold-text: #7a5800;     /* gold that is readable on light backgrounds */
+  --gold: #e3aa16;          
+  --gold-text: #7a5800;     
 
   --rail: #232931;
   --rail-raised: #2f3640;
@@ -26,7 +19,7 @@
   --on-rail-soft: #a7b0bb;
 
   --rack-frame: #1b2026;
-  --slab: #232931;          /* dark panels such as the slide quotes */
+  --slab: #232931;          
   --face-top: #363e49;
   --face-bottom: #2a313a;
   --face-top-hover: #404957;
@@ -44,8 +37,7 @@
   color-scheme: light;
 }
 
-/* Dark mode: follows the device setting until the visitor picks a mode
-   with the button in the top bar (saved as data-theme on <html>). */
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #15191e;
@@ -79,7 +71,7 @@
   color-scheme: dark;
 }
 
-/* 2. Base ------------------------------------------------------------------ */
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -140,7 +132,7 @@ p { margin: 0 0 1em; }
   white-space: nowrap;
 }
 
-/* 3. Layout: top bar + page ----------------------------------------------- */
+
 .topbar {
   position: sticky;
   top: 0;
@@ -155,7 +147,7 @@ p { margin: 0 0 1em; }
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 1120px;   /* same width as the page, so the name lines up with the content */
+  max-width: 1120px;   
   min-height: 64px;
   margin: 0 auto;
   padding: 10px clamp(16px, 4.5vw, 64px);
@@ -209,7 +201,7 @@ p { margin: 0 0 1em; }
 }
 .menu-btn svg { width: 20px; height: 20px; }
 
-/* Light/dark mode button: a moon in light mode, a sun in dark mode */
+
 .theme-btn {
   display: grid;
   place-items: center;
@@ -234,7 +226,7 @@ p { margin: 0 0 1em; }
 }
 html:not(.js) .theme-btn { display: none; }
 
-/* very narrow phones: the Menu button shows only its icon */
+
 @media (max-width: 420px) {
   .menu-btn { width: 44px; padding: 0; justify-content: center; }
   .menu-btn .menu-btn-text {
@@ -273,7 +265,7 @@ html:not(.js) .theme-btn { display: none; }
 .nav a:hover { background: var(--rail-raised); }
 .nav a[aria-current="page"] { color: #fff; }
 
-/* gold marker on the current page (a bar on the left in lists) */
+
 .nav a[aria-current="page"]::after,
 .nav a.is-section::after {
   content: "";
@@ -298,7 +290,7 @@ html:not(.js) .theme-btn { display: none; }
 
 .sub-toggle { display: none; }
 
-/* Phones and tablets: the Menu button opens the links in a panel under the bar */
+
 @media (max-width: 1023.98px) {
   .nav a[aria-current="page"] { background: var(--rail-raised); }
   .nav-sub {
@@ -323,8 +315,7 @@ html:not(.js) .theme-btn { display: none; }
   }
 }
 
-/* Computers: the links sit in the bar and the five topics drop down over
-   the page when you point at List of Outputs or click its arrow */
+
 @media (min-width: 1024px) {
   .topbar-inner { min-height: 76px; }
   .menu-btn { display: none; }
@@ -337,7 +328,7 @@ html:not(.js) .theme-btn { display: none; }
   .theme-btn { margin-left: 10px; }
   .nav-list > li { position: relative; }
 
-  /* in the bar, the current page is underlined in gold */
+  
   .nav-list > li > a[aria-current="page"]::after,
   .nav-list > li > a.is-section::after {
     top: auto;
@@ -386,7 +377,7 @@ html:not(.js) .theme-btn { display: none; }
     transform: translateY(-6px);
     transition: opacity 0.14s ease, transform 0.14s ease, visibility 0s linear 0.14s;
   }
-  /* invisible strip that keeps the menu open while the pointer moves down into it */
+  
   .nav-sub::before {
     content: "";
     position: absolute;
@@ -413,7 +404,7 @@ html:not(.js) .theme-btn { display: none; }
   padding: clamp(28px, 4.5vw, 64px) clamp(16px, 4.5vw, 64px) 40px;
 }
 
-/* 4. Shared page parts ----------------------------------------------------- */
+
 .page-title {
   max-width: 22ch;
   font-size: clamp(2rem, 1.2rem + 3vw, 3.4rem);
@@ -487,7 +478,7 @@ html:not(.js) .theme-btn { display: none; }
   font-size: 0.88rem;
 }
 
-/* Status lights (used in the rail, the rack and the legend) */
+
 .led {
   display: inline-block;
   flex: none;
@@ -502,7 +493,7 @@ html:not(.js) .theme-btn { display: none; }
   box-shadow: 0 0 0 2px rgba(63, 208, 131, 0.18), 0 0 9px rgba(63, 208, 131, 0.6);
 }
 
-/* 5. Rack of seminar outputs ----------------------------------------------- */
+
 .hero-name {
   font-size: clamp(2.6rem, 1.3rem + 5.6vw, 5.4rem);
   font-weight: 800;
@@ -534,7 +525,7 @@ html:not(.js) .theme-btn { display: none; }
   background: var(--rack-frame);
 }
 
-/* the two mounting rails with their square holes */
+
 .rack::before,
 .rack::after {
   content: "";
@@ -571,7 +562,7 @@ html:not(.js) .theme-btn { display: none; }
   text-decoration: none;
 }
 
-/* screws holding each unit to the rails */
+
 .unit::before,
 .unit::after {
   content: "";
@@ -660,7 +651,7 @@ html:not(.js) .theme-btn { display: none; }
 }
 .legend li { display: inline-flex; align-items: center; gap: 8px; }
 
-/* One orchestrated moment: the status lights power on when the page loads */
+
 @media (prefers-reduced-motion: no-preference) {
   .rack .led.on {
     animation: power-on 0.9s linear both;
@@ -683,7 +674,7 @@ html:not(.js) .theme-btn { display: none; }
   61%, 100% { background: var(--led); box-shadow: 0 0 0 2px rgba(63, 208, 131, 0.18), 0 0 9px rgba(63, 208, 131, 0.6); }
 }
 
-/* Links to the other pages, under the rack on the home page */
+
 .more-grid {
   display: grid;
   gap: 28px;
@@ -708,9 +699,8 @@ html:not(.js) .theme-btn { display: none; }
 .more-link:hover .more-title { text-decoration-color: currentColor; }
 .more-desc { display: block; margin-top: 6px; color: var(--ink-soft); max-width: 46ch; }
 
-/* 6. Output pages ---------------------------------------------------------- */
-/* Spec sheet: cells grow so every row is filled edge to edge; the 1px gaps
-   show the line colour behind them as dividers. */
+
+
 .spec {
   display: flex;
   flex-wrap: wrap;
@@ -835,9 +825,8 @@ html:not(.js) .theme-btn { display: none; }
 .pager-label { display: block; color: var(--ink-soft); font-size: 0.84rem; }
 .pager-title { display: block; margin-top: 4px; font: 700 1.05rem/1.3 var(--font-display); }
 
-/* 7. Galleries and image viewer ------------------------------------------- */
-/* Desktop screenshots sit in same-size "screens"; phone screenshots keep
-   their tall shape in narrower columns. */
+
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
@@ -948,7 +937,7 @@ html:not(.js) .theme-btn { display: none; }
 .lb-btn[hidden] { display: none; }
 .lb-close { position: absolute; top: 12px; right: 12px; }
 
-/* 8. Placeholders, About, Digital Literacy -------------------------------- */
+
 .placeholder-flag {
   display: flex;
   align-items: flex-start;
@@ -1083,7 +1072,7 @@ html:not(.js) .theme-btn { display: none; }
   .profile-photo { max-width: 220px; }
 }
 
-/* Print: drop the navigation, keep the content */
+
 @media print {
   .topbar, .skip-link, .pager, .actions, .lightbox { display: none !important; }
   body { background: #fff; color: #000; }

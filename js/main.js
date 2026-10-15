@@ -1,11 +1,8 @@
-/* Seminar portfolio: menu button on small screens, the List of Outputs
-   dropdown, light/dark mode and the image viewer.
-   Everything still works without this file: the menu shows open and
-   images open on their own when clicked. */
+
 (function () {
   "use strict";
 
-  /* Menu (phones and tablets) -------------------------------------------- */
+  
   var bar = document.querySelector(".topbar");
   var menuBtn = document.querySelector(".menu-btn");
 
@@ -31,16 +28,14 @@
     else if (wide.addListener) wide.addListener(onWide);
   }
 
-  /* List of Outputs dropdown (computers) ----------------------------------
-     Opens over the page while the mouse rests on List of Outputs. The arrow
-     button opens or closes it with a click, a tap or the keyboard. */
+  
   var sub = document.querySelector(".has-sub");
   var subBtn = document.querySelector(".sub-toggle");
 
   if (sub && subBtn) {
-    var hovering = false;   // the mouse is over List of Outputs or its menu
-    var pinned = false;     // opened with the arrow
-    var muted = false;      // closed with the arrow while the mouse is still over it
+    var hovering = false;   
+    var pinned = false;     
+    var muted = false;      
     var leaveTimer = null;
 
     var render = function () {
@@ -58,7 +53,7 @@
     sub.addEventListener("pointerleave", function (e) {
       if (e.pointerType !== "mouse") return;
       clearTimeout(leaveTimer);
-      leaveTimer = setTimeout(function () {   // a short pause forgives small slips
+      leaveTimer = setTimeout(function () {   
         hovering = false;
         muted = false;
         render();
@@ -73,7 +68,7 @@
       render();
     });
 
-    // close when focus or a click moves somewhere else, or on Escape
+    
     sub.addEventListener("focusout", function (e) {
       if (!sub.contains(e.relatedTarget)) { pinned = false; render(); }
     });
@@ -90,9 +85,7 @@
     });
   }
 
-  /* Light and dark mode ------------------------------------------------------
-     Starts from the device setting; the button switches modes and the choice
-     is remembered on every page. */
+  
   var root = document.documentElement;
   var themeBtn = document.querySelector(".theme-btn");
   var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
@@ -112,7 +105,7 @@
     themeBtn.addEventListener("click", function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) { /* private mode: not saved */ }
+      try { localStorage.setItem("theme", next); } catch (e) {  }
       syncThemeBtn();
     });
     if (systemDark.addEventListener) systemDark.addEventListener("change", syncThemeBtn);
@@ -120,7 +113,7 @@
     syncThemeBtn();
   }
 
-  /* Image viewer --------------------------------------------------------- */
+  
   var dialog = document.getElementById("lightbox");
   var links = Array.prototype.slice.call(document.querySelectorAll("a[data-gallery]"));
   if (!dialog || !links.length || typeof dialog.showModal !== "function") return;
@@ -172,7 +165,7 @@
     if (e.key === "ArrowRight") { e.preventDefault(); show(index + 1); }
   });
 
-  // Clicking the dark area around the picture closes the viewer
+  
   dialog.addEventListener("click", function (e) {
     if (e.target === dialog || e.target.classList.contains("lb-stage")) dialog.close();
   });
@@ -182,7 +175,7 @@
     if (opener) opener.focus();
   });
 
-  // Swipe left or right to change pictures on touch screens
+  
   var startX = null;
   dialog.addEventListener("touchstart", function (e) {
     startX = e.touches.length === 1 ? e.touches[0].clientX : null;
